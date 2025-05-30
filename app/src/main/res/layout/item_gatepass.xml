@@ -1,77 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:elevation="8dp"
-    app:cardCornerRadius="16dp"
-    android:background="?attr/colorSecondaryContainer"
+    android:id="@+id/myCard"
+    android:layout_margin="16dp"
+    android:backgroundTint="?attr/colorSurface"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="2dp"
+    android:clickable="true"
+    android:focusable="true"
     app:strokeColor="?attr/colorPrimary"
     app:strokeWidth="0dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="20dp">
 
-        <TextView
-            android:id="@+id/tvStudentName"
-            android:text="Student Name"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
+        <!-- Reason Title -->
         <TextView
             android:id="@+id/tvReason"
-            android:text="Reason: "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"/>
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="Reason Title"
+            android:textAppearance="?attr/textAppearanceHeadlineSmall"
+            android:textColor="?attr/colorOnSurface" />
 
-        <!-- ✅ This is the missing TextView -->
+        <!-- Note -->
         <TextView
-            android:id="@+id/tvRange"
-            android:text="From: - To: "
+            android:id="@+id/tvNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/darker_gray"
-            android:layout_marginTop="4dp"/>
+            android:layout_below="@id/tvReason"
+            android:layout_marginTop="8dp"
+            android:maxLength="50"
+            android:text="Note: Note in detail.."
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="?attr/colorOnSurfaceVariant" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipStatus"
+        <!-- Applied Date (Top Right) -->
+        <TextView
+            android:id="@+id/tvAppliedDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status"
-            style="@style/Widget.Material3.Chip.Assist"
-            android:layout_marginTop="8dp"/>
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:text="24 Oct"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="?attr/colorOutline" />
 
-        <LinearLayout
+        <!-- Status and Date Range Section -->
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="end"
-            android:orientation="horizontal"
-            android:paddingTop="8dp">
+            android:layout_below="@id/tvNote"
+            android:layout_marginTop="10dp">
 
-            <TextView
-                android:id="@+id/tvViewDetails"
-                android:text="View in Detail"
-                android:textColor="?attr/colorPrimary"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:layout_marginEnd="4dp"
+            <!-- Chip Status -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipStatus"
+                style="@style/Widget.Material3.Chip.Assist"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textColor="?attr/colorOnSecondaryContainer"
+                app:chipBackgroundColor="?attr/colorSecondaryContainer"
+                app:chipStrokeColor="?attr/colorPrimary"
+                app:chipStrokeWidth="0dp"
+                app:iconTint="?attr/colorOnSecondaryContainer" />
 
-            <ImageView
-                android:id="@+id/arrowIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/arrow_right_24px"
-                app:tint="?attr/colorPrimary" />
-        </LinearLayout>
-    </LinearLayout>
+            <!-- Date Range Start -->
+            <TextView
+                android:id="@+id/tvDateRangeStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="8dp"
+                android:text="24 APR"
+                android:layout_centerVertical="true"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="?attr/colorOutline" />
+
+            <!-- Date Range End -->
+            <TextView
+                android:id="@+id/tvDateRangeEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/tvDateRangeStart"
+                android:layout_marginEnd="8dp"
+                android:layout_centerVertical="true"
+                android:text="30 Oct"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="?attr/colorOutline" />
+
+        </RelativeLayout>
+    </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

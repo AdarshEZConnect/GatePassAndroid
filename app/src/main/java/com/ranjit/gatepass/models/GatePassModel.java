@@ -3,16 +3,27 @@ package com.ranjit.gatepass.models;
 public class GatePassModel {
     private String studentName;
     private String reason;
+    private String note;
     private String fromDate;
     private String toDate;
     private String status;
+    private String appliedDate;
 
-    public GatePassModel(String studentName, String reason, String fromDate, String toDate, String status) {
-        this.studentName = studentName;
+    public GatePassModel(String reason, String fromDate, String toDate, String status,String note,String appliedDate) {
         this.reason = reason;
         this.fromDate = fromDate;
+        this.note=note;
         this.toDate = toDate;
         this.status = status;
+        this.appliedDate = appliedDate;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public String getStudentName() {
@@ -33,5 +44,13 @@ public class GatePassModel {
 
     public String getStatus() {
         return status;
+    }
+
+    public String getAppliedDate() {
+        return appliedDate;
+    }
+
+    public void setAppliedDate(String appliedDate) {
+        this.appliedDate = appliedDate;
     }
 }

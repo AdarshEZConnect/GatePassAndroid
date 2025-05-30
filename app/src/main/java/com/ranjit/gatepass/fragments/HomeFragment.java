@@ -29,11 +29,12 @@ public class HomeFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.product_recycler_view);
         List<GatePassModel> data = new ArrayList<>();
 
-        data.add(new GatePassModel("Ranjit","Not Intrestred in studies","24/10/2003","24/10/2003","Pending"));
-        data.add(new GatePassModel("Ranjit","Not Intrestred in studies","24/10/2003","24/10/2003","Pending"));
-        data.add(new GatePassModel("Ranjit","Not Intrestred in studies","24/10/2003","24/10/2003","Pending"));
-        data.add(new GatePassModel("Ranjit","Not Intrestred in studies","24/10/2003","24/10/2003","Pending"));
-        data.add(new GatePassModel("Ranjit","Not Intrestred in studies","24/10/2003","24/10/2003","Pending"));
+        data.add(new GatePassModel("Sick Leave","24/10/2003","24/10/2003","Pending","Planed 7 days trip with family Planed 7 days trip with family Planed 7 days trip with family ","24/10/2003"));
+        data.add(new GatePassModel("Sick Leave","24/10/2003","24/10/2003","Pending","Planed 7 days trip with family Planed 7 days trip with family Planed 7 days trip with family ","24/10/2003"));
+        data.add(new GatePassModel("Sick Leave","24/10/2003","24/10/2003","Pending","Planed 7 days trip with family Planed 7 days trip with family Planed 7 days trip with family ","24/10/2003"));
+        data.add(new GatePassModel("Sick Leave","24/10/2003","24/10/2003","Pending","Planed 7 days trip with family Planed 7 days trip with family Planed 7 days trip with family ","24/10/2003"));
+        data.add(new GatePassModel("Sick Leave","24/10/2003","24/10/2003","Pending","Planed 7 days trip with family Planed 7 days trip with family Planed 7 days trip with family ","24/10/2003"));
+        data.add(new GatePassModel("Sick Leave","24/10/2003","24/10/2003","Pending","Planed 7 days trip with family Planed 7 days trip with family Planed 7 days trip with family ","24/10/2003"));
 
         GatePassAdapter adapter = new GatePassAdapter(getContext(), data);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

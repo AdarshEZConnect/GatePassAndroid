@@ -10,10 +10,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.ranjit.gatepass.R;
+import com.ranjit.gatepass.fragments.ViewPassFragment;
 import com.ranjit.gatepass.models.GatePassModel;
 
 import java.util.List;
@@ -37,17 +40,26 @@ public class GatePassAdapter extends RecyclerView.Adapter<GatePassAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         GatePassModel model = gatePassList.get(position);
-        holder.tvStudentName.setText(model.getStudentName());
-        holder.tvReason.setText("Reason: " + model.getReason());
-        holder.tvDateRange.setText("From: " + model.getFromDate() + " To: " + model.getToDate());
+        holder.tvReason.setText(model.getReason());
+        holder.tvNote.setText(model.getNote());
+        holder.tvDateRangeStart.setText(model.getFromDate());
+        holder.tvDateRangeEnd.setText(model.getToDate());
+        holder.tvAppliedDate.setText(model.getAppliedDate());
         holder.chipStatus.setText(model.getStatus());
 
-        holder.tvViewDetails.setOnClickListener(v ->
-                Toast.makeText(context, "Details for " + model.getStudentName(), Toast.LENGTH_SHORT).show());
 
-        holder.arrowIcon.setOnClickListener(v ->
-                Toast.makeText(context, "Arrow clicked", Toast.LENGTH_SHORT).show());
+        holder.cardView.setOnClickListener(v -> {
+            ViewPassFragment fragment = ViewPassFragment.newInstance(model);
+
+            ((AppCompatActivity) context).getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.frame_container, fragment) // use your actual container ID
+                    .addToBackStack(null)
+                    .commit();
+        });
+
     }
 
     @Override
@@ -56,18 +68,20 @@ public class GatePassAdapter extends RecyclerView.Adapter<GatePassAdapter.ViewHo
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvStudentName, tvReason, tvDateRange, tvViewDetails;
+        MaterialCardView cardView;
+
+        TextView tvDateRangeStart, tvDateRangeEnd, tvReason, tvNote,tvAppliedDate;
         Chip chipStatus;
-        ImageView arrowIcon;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvStudentName = itemView.findViewById(R.id.tvStudentName);
+            cardView = itemView.findViewById(R.id.myCard);
             tvReason = itemView.findViewById(R.id.tvReason);
-            tvDateRange = itemView.findViewById(R.id.tvRange);
+            tvNote = itemView.findViewById(R.id.tvNote);
             chipStatus = itemView.findViewById(R.id.chipStatus);
-            tvViewDetails = itemView.findViewById(R.id.tvViewDetails);
-            arrowIcon = itemView.findViewById(R.id.arrowIcon);
+            tvAppliedDate = itemView.findViewById(R.id.tvAppliedDate);
+            tvDateRangeStart = itemView.findViewById(R.id.tvDateRangeStart);
+            tvDateRangeEnd = itemView.findViewById(R.id.tvDateRangeEnd);
         }
     }
 }

@@ -1,7 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.GatePass" parent="Theme.Material3.Light.NoActionBar">
-    <!-- Customize your light theme here. -->
+        <item name="android:transitionGroup">true</item>
+
+        <item name="android:windowContentTransitions">true</item>
+
+        <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/md_theme_primary</item>
 
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>

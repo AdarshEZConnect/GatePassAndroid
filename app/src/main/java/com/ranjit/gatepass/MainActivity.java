@@ -16,10 +16,12 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ranjit.gatepass.fragments.ComplaintsFragment;
 import com.ranjit.gatepass.fragments.HomeFragment;
+import com.ranjit.gatepass.fragments.ViewPassFragment;
 
 public class MainActivity extends AppCompatActivity {
     private final Fragment gatePassFragment = new HomeFragment();
     private final Fragment complaintFragment = new ComplaintsFragment();
+    private final Fragment viewPassFragment = new ViewPassFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, 40, systemBars.right, 0);
+            v.setPadding(systemBars.left, 50, systemBars.right, 0);
             return insets;
         });
         // Hide system bars
@@ -61,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 selectedFragment = gatePassFragment;
             } else if (item.getItemId() == R.id.nav_complaints) {
                 selectedFragment = complaintFragment;
-            }  else if (item.getItemId() == R.id.nav_profile) {
-                selectedFragment = complaintFragment;
+            } else if (item.getItemId() == R.id.nav_profile) {
+                selectedFragment = viewPassFragment;
             } else {
                 return false;
             }
