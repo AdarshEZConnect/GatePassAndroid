@@ -10,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.ranjit.gatepass.R;
 import com.ranjit.gatepass.adapters.GatePassAdapter;
 import com.ranjit.gatepass.models.GatePassModel;
+import com.ranjit.gatepass.sheets.NewGatePass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +41,18 @@ public class HomeFragment extends Fragment {
         GatePassAdapter adapter = new GatePassAdapter(getContext(), data);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+        ExtendedFloatingActionButton fab = view.findViewById(R.id.fab_add_grocery);
 
+        fab.setOnClickListener(v -> {
+            NewGatePass bottomSheet = new NewGatePass();
+
+            bottomSheet.setGrocerySubmitListener(item -> {
+                // Handle submitted item (optional)
+                // e.g., update UI or notify adapter
+            });
+
+            bottomSheet.show(getParentFragmentManager(), bottomSheet.getTag());
+        });
         return view;
     }
 }

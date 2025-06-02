@@ -31,17 +31,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvReason"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Reson Type"
-                android:layout_margin="@dimen/dp_10"
-                style="@style/TextAppearance.Material3.DisplaySmall"
-                android:textColor="?attr/colorPrimary"
-                android:textStyle="bold" />
-
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,8 +58,34 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
+                            android:text="Pass Type"
+                            style="@style/TextAppearance.Material3.TitleMedium"
+                            android:textColor="?attr/colorPrimary"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvReason"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="24 Oct"
+                            android:textColor="#6E6C6C"
+                            style="@style/TextAppearance.Material3.TitleMedium"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
                             android:text="Start"
-                            style="@style/TextAppearance.Material3.TitleLarge"
+                            style="@style/TextAppearance.Material3.TitleMedium"
                             android:textColor="?attr/colorPrimary"
                             android:textStyle="bold" />
 
@@ -81,7 +96,7 @@
                             android:layout_alignParentEnd="true"
                             android:text="24 Oct"
                             android:textColor="#6E6C6C"
-                            style="@style/TextAppearance.Material3.TitleLarge"
+                            style="@style/TextAppearance.Material3.TitleMedium"
                             android:textStyle="bold" />
                     </RelativeLayout>
 
@@ -98,7 +113,7 @@
                             android:layout_alignParentStart="true"
                             android:text="End"
                             android:textColor="?attr/colorPrimary"
-                            style="@style/TextAppearance.Material3.TitleLarge"
+                            style="@style/TextAppearance.Material3.TitleMedium"
                             android:textStyle="bold" />
 
                         <TextView
@@ -108,7 +123,7 @@
                             android:layout_alignParentEnd="true"
                             android:text="27 Oct"
                             android:textColor="#6E6C6C"
-                            style="@style/TextAppearance.Material3.TitleLarge"
+                            style="@style/TextAppearance.Material3.TitleMedium"
                             android:textStyle="bold" />
                     </RelativeLayout>
 
@@ -125,7 +140,7 @@
                             android:layout_alignParentStart="true"
                             android:text="Status"
                             android:textColor="?attr/colorPrimary"
-                            style="@style/TextAppearance.Material3.TitleLarge"
+                            style="@style/TextAppearance.Material3.TitleMedium"
                             android:textStyle="bold" />
 
                         <TextView
@@ -135,7 +150,7 @@
                             android:layout_alignParentEnd="true"
                             android:text="Pending"
                             android:textColor="#6E6C6C"
-                            style="@style/TextAppearance.Material3.TitleLarge"
+                            style="@style/TextAppearance.Material3.TitleMedium"
                             android:textStyle="bold" />
                     </RelativeLayout>
                 </LinearLayout>
@@ -169,7 +184,7 @@
                             android:layout_alignParentStart="true"
                             android:text="Note :"
                             android:textColor="?attr/colorPrimary"
-                            style="@style/TextAppearance.Material3.TitleLarge"
+                            style="@style/TextAppearance.Material3.TitleMedium"
                             android:textStyle="bold" />
 
                     </RelativeLayout>
