@@ -2,6 +2,14 @@
     <string name="app_name">GatePass</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile">Profile</string>
+    <string name="ranjit_patil">Ranjit Patil</string>
+    <string name="gender">Gender</string>
+    <string name="user_information">User Information</string>
+    <string name="department">Department</string>
+    <string name="mobail">Mobail No</string>
+    <string name="email">Email</string>
+    <string name="role">Role</string>
     <string-array name="gate_pass_options">
         <item>Day Pass</item>
         <item>Overnight Pass</item>

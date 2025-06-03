@@ -21,6 +21,7 @@ import com.ranjit.gatepass.R;
 import com.ranjit.gatepass.interfaces.GatePassApiService;
 import com.ranjit.gatepass.models.GatePassModel;
 import com.ranjit.gatepass.services.RetrofitClientForGatePass;
+import com.ranjit.gatepass.util.DateUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -65,13 +66,16 @@ public class NewGatePass extends BottomSheetDialogFragment {
         EditText etStart = view.findViewById(R.id.et_start_datetime);
         EditText etEnd = view.findViewById(R.id.et_end_datetime);
 
+        String startDateTime = String.valueOf(etStart.getText());
+        String endtDateTime = String.valueOf(etStart.getText());
+
         etStart.setOnClickListener(v -> showMaterialDateTimePicker(etStart));
         etEnd.setOnClickListener(v -> showMaterialDateTimePicker(etEnd));
 
         // Set OnClickListener for the Submit button
         btnSubmit.setOnClickListener(v -> {
             String detailNote = detailNotes.getText().toString();
-            String productName = spinnerPassType.getSelectedItem().toString();
+            String gatePassType = spinnerPassType.getSelectedItem().toString();
 
             // Validate input fields
             if ( detailNote.isEmpty()) {
@@ -79,8 +83,16 @@ public class NewGatePass extends BottomSheetDialogFragment {
                 return;
             }
 
-            // Create GroceryItem object
-            GatePassModel item = new GatePassModel("XX","ccc","ccc","ccc","ccc","ccc"
+            String currentDate = DateUtil.getCurrentDate();
+
+            // Create GatePass Item object
+            GatePassModel item = new GatePassModel(
+                    gatePassType,
+                    startDateTime,
+                    endtDateTime,
+                    "Pending",
+                    detailNote,
+                    currentDate
             );
 
             // API call to submit grocery item

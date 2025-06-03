@@ -16,6 +16,7 @@
         app:navigationIcon="@drawable/arrow_back_ios_24px"
         app:title="View Pass"
         app:titleCentered="true"
+        app:menu="@menu/view_pass_top_app_bar_menu"
         app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
     <!-- Content -->
