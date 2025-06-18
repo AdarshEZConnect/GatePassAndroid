@@ -1,7 +1,6 @@
 package com.ranjit.gatepass.models;
 
 public class GatePassModel {
-    private String studentName;
     private String reason;
     private String note;
     private String fromDate;
@@ -26,9 +25,6 @@ public class GatePassModel {
         this.note = note;
     }
 
-    public String getStudentName() {
-        return studentName;
-    }
 
     public String getReason() {
         return reason;

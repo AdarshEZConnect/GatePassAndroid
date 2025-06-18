@@ -5,9 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,15 +16,16 @@ import com.google.android.material.chip.Chip;
 import com.ranjit.gatepass.R;
 import com.ranjit.gatepass.fragments.ViewPassFragment;
 import com.ranjit.gatepass.models.GatePassModel;
+import com.ranjit.gatepass.models.GatePassResponse;
 
 import java.util.List;
 
 public class GatePassAdapter extends RecyclerView.Adapter<GatePassAdapter.ViewHolder> {
 
     private Context context;
-    private List<GatePassModel> gatePassList;
+    private List<GatePassResponse> gatePassList;
 
-    public GatePassAdapter(Context context, List<GatePassModel> gatePassList) {
+    public GatePassAdapter(Context context, List<GatePassResponse> gatePassList) {
         this.context = context;
         this.gatePassList = gatePassList;
     }
@@ -41,12 +40,12 @@ public class GatePassAdapter extends RecyclerView.Adapter<GatePassAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        GatePassModel model = gatePassList.get(position);
-        holder.tvReason.setText(model.getReason());
-        holder.tvNote.setText(model.getNote());
+        GatePassResponse model = gatePassList.get(position);
+        holder.tvReason.setText(model.getPassType());
+        holder.tvNote.setText(model.getReason());
         holder.tvDateRangeStart.setText(model.getFromDate());
         holder.tvDateRangeEnd.setText(model.getToDate());
-        holder.tvAppliedDate.setText(model.getAppliedDate());
+        holder.tvAppliedDate.setText(model.getAppliedDateTime());
         holder.chipStatus.setText(model.getStatus());
 
 

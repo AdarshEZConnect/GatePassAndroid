@@ -6,8 +6,8 @@
 
         <item
             android:id="@+id/nav_complaints"
-            android:icon="@drawable/problem_24px"
-            android:title="Complaints"
+            android:title=""
+            android:enabled="false"
             android:checkable="false" />
         <item
             android:id="@+id/nav_profile"

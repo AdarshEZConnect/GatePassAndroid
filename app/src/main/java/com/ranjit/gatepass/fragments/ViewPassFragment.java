@@ -3,7 +3,6 @@ package com.ranjit.gatepass.fragments;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
@@ -14,7 +13,7 @@ import android.widget.TextView;
 
 import com.google.android.material.transition.MaterialSharedAxis;
 import com.ranjit.gatepass.R;
-import com.ranjit.gatepass.models.GatePassModel;
+import com.ranjit.gatepass.models.GatePassResponse;
 
 public class ViewPassFragment extends Fragment {
     private static final String ARG_NOTE = "note";
@@ -22,13 +21,17 @@ public class ViewPassFragment extends Fragment {
     private static final String ARG_START_DATE = "start_date";
     private static final String ARG_END_DATE = "end_date";
     private static final String ARG_STATUS = "status";
-    public static ViewPassFragment newInstance(GatePassModel model) {
+    private static final String ARG_END_TIME = "fromTime";
+    private static final String ARG_START_TIME = "toTime";
+    public static ViewPassFragment newInstance(GatePassResponse model) {
         ViewPassFragment fragment = new ViewPassFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_NOTE, model.getNote());
-        args.putString(ARG_REASON, model.getReason());
+        args.putString(ARG_NOTE, model.getReason());
+        args.putString(ARG_REASON, model.getPassType());
         args.putString(ARG_START_DATE, model.getFromDate());
         args.putString(ARG_END_DATE, model.getToDate());
+        args.putString(ARG_END_TIME, model.getToTime());
+        args.putString(ARG_START_TIME, model.getFromTime());
         args.putString(ARG_STATUS, model.getStatus());
         fragment.setArguments(args);
         return fragment;
@@ -59,8 +62,8 @@ public class ViewPassFragment extends Fragment {
 
         if (getArguments() != null) {
             tvNote.setText(getArguments().getString(ARG_NOTE));
-            tvDateStart.setText(getArguments().getString(ARG_START_DATE));
-            tvDateEnd.setText(getArguments().getString(ARG_END_DATE));
+            tvDateStart.setText(getArguments().getString(ARG_START_DATE) + " " + getArguments().getString(ARG_START_TIME));
+            tvDateEnd.setText(getArguments().getString(ARG_END_DATE) + " " + getArguments().getString(ARG_END_TIME));
             tvReason.setText(getArguments().getString(ARG_REASON));
             tvStatus.setText(getArguments().getString(ARG_STATUS));
         }

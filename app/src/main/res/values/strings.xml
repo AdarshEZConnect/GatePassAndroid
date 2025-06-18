@@ -22,5 +22,17 @@
         <item>Home Visit Pass</item>
         <item>Special Permission Pass</item>
     </string-array>
+    <string-array name="departments_options">
+        <item>Day Pass</item>
+        <item>Overnight Pass</item>
+        <item>Weekend Pass</item>
+        <item>Medical Emergency Pass</item>
+        <item>Outing Pass</item>
+        <item>Library Late Night Pass</item>
+        <item>Event Participation Pass</item>
+        <item>Internship/Industrial Visit Pass</item>
+        <item>Home Visit Pass</item>
+        <item>Special Permission Pass</item>
+    </string-array>
 
 </resources>

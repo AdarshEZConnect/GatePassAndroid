@@ -23,6 +23,18 @@
             app:title="Gate Pass"
             app:titleCentered="true" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/refresh_24px"
+            android:visibility="gone"
+            android:contentDescription="Retry"
+            android:layout_marginTop="16dp"
+            app:tint="?attr/colorOnPrimary"
+            app:backgroundTint="?attr/colorPrimary" />
+
         <!-- RecyclerView for displaying products -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/product_recycler_view"
@@ -36,6 +48,18 @@
             tools:listitem="@layout/item_gatepass" />
 
     </LinearLayout>
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/test_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="150dp"
+        android:text="Test"
+        android:textColor="?attr/colorOnPrimary"
+        app:tint="@android:color/white"
+        app:backgroundTint="?attr/colorPrimary" />
+
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fab_add_grocery"
         android:layout_width="wrap_content"
