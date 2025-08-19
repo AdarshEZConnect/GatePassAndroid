@@ -8,6 +8,12 @@
 
     <!-- Top Blue Background -->
     <!-- Welcome Title -->
+
+    <!-- Subtext -->
+
+    <!-- Card Background -->
+
+    <!-- Card Background -->
     <View
         android:id="@+id/topBackground"
         android:layout_width="0dp"
@@ -18,15 +24,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Subtext -->
-
-    <!-- Card Background -->
     <TextView
         android:id="@+id/textView"
         style="@style/TextAppearance.Material3.HeadlineMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/cabin"
         android:text="Welcome Back"
         android:textColor="#FFFFFF"
@@ -42,14 +45,13 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/eb_garamond"
         android:text="Login to your account"
-        android:textColor="#FFFFFF"
+        android:textColor="#ffff"
         app:layout_constraintBottom_toTopOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.636" />
-
+        app:layout_constraintVertical_bias="0.269" />
     <androidx.cardview.widget.CardView
         android:id="@+id/cardContainer"
         android:layout_width="0dp"
@@ -125,8 +127,8 @@
     <!-- Floating Logo -->
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/logo"
         android:background="@drawable/circle_background"
         android:padding="10dp"
