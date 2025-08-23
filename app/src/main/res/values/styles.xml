@@ -5,5 +5,12 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">#ffff</item>
     </style>
+    <style name="ToolbarTitleStyle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.05</item>
+    </style>
 
 </resources>

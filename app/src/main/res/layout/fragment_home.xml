@@ -20,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorSurface"
-            app:title="Gate Pass"
-            app:titleCentered="true" />
+            app:titleTextAppearance="@style/ToolbarTitleStyle"
+            app:title="Gate Pass" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_retry"
