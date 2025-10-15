@@ -9,7 +9,7 @@ public class ApiClient {
     public static Retrofit getClient() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("https://eed70d761fe3.ngrok-free.app/") // Use your actual base URL or IP
+                    .baseUrl("http://10.10.105.216:8080/") // Use your actual base URL or IP
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

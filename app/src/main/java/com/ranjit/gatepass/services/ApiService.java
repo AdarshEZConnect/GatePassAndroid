@@ -15,9 +15,9 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface ApiService {
-    @GET("api/gatepasses/android-user/{id}")
+    @GET("api/gatepass/user/{id}")
     Call<List<GatePassResponse>> getGatePasses(@Path("id") int id, @Header("Authorization") String token);
-    @POST("api/gatepasses/apply")
+    @POST("api/gatepass/apply")
     Call<Void> applyGatePass(
             @Body GatePassRequest request,
             @Header("Authorization") String token

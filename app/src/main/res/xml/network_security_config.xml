@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">https://frank-one-swan.ngrok-free.app</domain>
+        <domain includeSubdomains="true">10.10.105.216</domain>
+    </domain-config>
+</network-security-config>
