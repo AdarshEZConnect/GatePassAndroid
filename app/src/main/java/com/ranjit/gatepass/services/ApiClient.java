@@ -9,10 +9,11 @@ public class ApiClient {
     public static Retrofit getClient() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://10.10.105.216:8080/") // Use your actual base URL or IP
+                    .baseUrl("https://gatepass-app-1-0.onrender.com/") // Use your actual base URL or IP
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
         return retrofit;
     }
 }
+//http://10.10.105.216:8080
