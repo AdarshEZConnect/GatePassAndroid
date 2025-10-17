@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Navigate to Sign Up
         signUpLink.setOnClickListener(v -> {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, SignUpActivity.class));
         });
     }
 
@@ -121,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("userMobile", user.getUserContact());
                     editor.putString("departmentName", user.getDepartmentName());
                     editor.putString("gender", user.getGender());
+                    editor.putString("profileImage", user.getProfileImage());
                     editor.apply();
 
                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();

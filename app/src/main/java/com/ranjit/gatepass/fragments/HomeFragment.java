@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,11 +33,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
-
     private RecyclerView recyclerView;
     private GatePassAdapter adapter;
     private List<GatePassResponse> passList = new ArrayList<>();
     private FloatingActionButton retryButton;
+    private View emptyStateLayout;
+    private ProgressBar progressBar;
 
     private int userId;
 
@@ -48,25 +50,74 @@ public class HomeFragment extends Fragment {
         userId = prefs.getInt("userId", 0);
 
         recyclerView = view.findViewById(R.id.product_recycler_view);
-        retryButton = view.findViewById(R.id.btn_retry);
+        retryButton = view.findViewById(R.id.empty_retry_btn);
+        emptyStateLayout = view.findViewById(R.id.empty_state_layout);
+        progressBar = view.findViewById(R.id.progressBar);
 
-        setupRecyclerView();
-        setupFabs(view);
+        // ✅ Initialize RecyclerView + Adapter
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new GatePassAdapter(getContext(),passList);
+        recyclerView.setAdapter(adapter);
+
         setupRetryButton();
-
+        setupFabs(view);
         loadGatePassData();
 
         return view;
     }
 
-    private void setupRecyclerView() {
-        adapter = new GatePassAdapter(getContext(), passList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adapter);
+
+    private void loadGatePassData() {
+        showLoading(true); // show progress bar
+
+        SharedPreferences prefs = requireActivity().getSharedPreferences("GatePassApp", MODE_PRIVATE);
+        String token = prefs.getString("token", "-");
+        if (token == null || token.equals("-")) {
+            showLoading(false);
+            showEmptyState();
+            return;
+        }
+
+        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        Call<List<GatePassResponse>> call = apiService.getGatePasses(userId, "Bearer " + token);
+
+        call.enqueue(new Callback<List<GatePassResponse>>() {
+            @Override
+            public void onResponse(Call<List<GatePassResponse>> call, Response<List<GatePassResponse>> response) {
+                showLoading(false); // hide progress bar
+
+                if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
+                    passList.clear();
+                    passList.addAll(response.body());
+                    adapter.notifyDataSetChanged();
+                    showRecyclerView();
+                } else {
+                    showEmptyState();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<GatePassResponse>> call, Throwable t) {
+                showLoading(false);
+                showEmptyState();
+            }
+        });
+    }
+
+    private void showEmptyState() {
+        recyclerView.setVisibility(View.GONE);
+        emptyStateLayout.setVisibility(View.VISIBLE);
+        retryButton.setVisibility(View.VISIBLE);
+    }
+
+
+    private void showRecyclerView() {
+        emptyStateLayout.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
     }
 
     private void setupFabs(View view) {
-        ExtendedFloatingActionButton fab = view.findViewById(R.id.fab_add_grocery);
+        ExtendedFloatingActionButton fab = view.findViewById(R.id.fab_add_pass);
         ExtendedFloatingActionButton testFab = view.findViewById(R.id.test_fab);
 
         fab.setOnClickListener(v -> {
@@ -78,52 +129,29 @@ public class HomeFragment extends Fragment {
         testFab.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), SignUpActivity.class));
         });
+
+        retryButton.setOnClickListener(v -> {
+            showLoading(true);
+            loadGatePassData();
+        });
+    }
+    private void showLoading(boolean isLoading) {
+        progressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+        recyclerView.setVisibility(isLoading ? View.GONE : View.VISIBLE);
+
+        if (emptyStateLayout != null)
+            emptyStateLayout.setVisibility(View.GONE);
+
+        if (retryButton != null)
+            retryButton.setVisibility(View.GONE);
     }
 
     private void setupRetryButton() {
         retryButton.setOnClickListener(v -> {
             retryButton.setVisibility(View.GONE);
+            showLoading(true);  // 👈 show progress before calling API
             loadGatePassData();
         });
     }
 
-    private void loadGatePassData() {
-        SharedPreferences prefs = requireActivity().getSharedPreferences("GatePassApp", MODE_PRIVATE);
-        String token = prefs.getString("token", "-");
-        if (token == null || token.equals("-")) {
-            showRetryButton();
-            return;
-        }
-
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
-        Call<List<GatePassResponse>> call = apiService.getGatePasses(userId, "Bearer " + token);
-
-        call.enqueue(new Callback<List<GatePassResponse>>() {
-            @Override
-            public void onResponse(Call<List<GatePassResponse>> call, Response<List<GatePassResponse>> response) {
-                if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
-                    passList.clear();
-                    passList.addAll(response.body());
-                    adapter.notifyDataSetChanged();
-                    toggleRetryButton(false);
-                } else {
-                    showRetryButton();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<GatePassResponse>> call, Throwable t) {
-                showRetryButton();
-            }
-        });
-    }
-
-    private void toggleRetryButton(boolean show) {
-        retryButton.setVisibility(show ? View.VISIBLE : View.GONE);
-        recyclerView.setVisibility(show ? View.GONE : View.VISIBLE);
-    }
-
-    private void showRetryButton() {
-        toggleRetryButton(true);
-    }
 }

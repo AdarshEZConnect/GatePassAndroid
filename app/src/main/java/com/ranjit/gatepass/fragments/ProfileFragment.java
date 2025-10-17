@@ -52,14 +52,12 @@ public class ProfileFragment extends Fragment {
         tvParentMobile.setText(userMobile);
 
         ShapeableImageView profileImage = view.findViewById(R.id.profile_image); // set proper ID
-        String imageUrl = prefs.getString("profileImage", null);
+        String imageUrl = prefs.getString("profileImage", "-");
 
-        if (imageUrl != null) {
-            Glide.with(this)
-                    .load(imageUrl)
-                    .placeholder(R.drawable.man)
-                    .into(profileImage);
-        }
+        Glide.with(this)
+                .load(imageUrl)
+                .placeholder(R.drawable.man)
+                .into(profileImage);
 
         return view;
     }

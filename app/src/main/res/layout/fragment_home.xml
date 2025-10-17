@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- LinearLayout to organize Spinner and RecyclerView -->
+    <!-- LinearLayout to organize Toolbar, Retry button, and RecyclerView -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,28 +14,18 @@
         android:paddingEnd="@dimen/dp_10"
         android:paddingTop="@dimen/dp_8">
 
+
         <!-- TopAppBar -->
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/school_24px"
             android:background="?attr/colorSurface"
             app:titleTextAppearance="@style/ToolbarTitleStyle"
             app:title="Gate Pass" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btn_retry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/refresh_24px"
-            android:visibility="gone"
-            android:contentDescription="Retry"
-            android:layout_marginTop="16dp"
-            app:tint="?attr/colorOnPrimary"
-            app:backgroundTint="?attr/colorPrimary" />
-
-        <!-- RecyclerView for displaying products -->
+        <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/product_recycler_view"
             android:layout_width="match_parent"
@@ -47,9 +37,49 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_gatepass" />
 
+        <!-- Empty State Layout -->
+        <LinearLayout
+            android:id="@+id/empty_state_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/empty_image"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/cofe"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:id="@+id/empty_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Gate Passes Found"
+                android:textSize="16sp"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginBottom="12dp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/empty_retry_btn"
+                style="@style/Widget.Material3.Button.IconButton.Outlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/refresh_24px"
+                android:contentDescription="Retry"
+                app:tint="?attr/colorOnPrimary"
+                app:backgroundTint="?attr/colorPrimary" />
+        </LinearLayout>
+
     </LinearLayout>
+
+    <!-- FAB Buttons -->
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/test_fab"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
@@ -61,19 +91,19 @@
         app:backgroundTint="?attr/colorPrimary" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fab_add_grocery"
+        android:id="@+id/fab_add_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="70dp"
-        android:text="New"
         app:iconTint="?attr/colorOnPrimary"
         android:textColor="?attr/colorOnPrimary"
         app:icon="@drawable/add_24px"
         app:tint="@android:color/white"
         app:backgroundTint="?attr/colorPrimary" />
 
+    <!-- ProgressBar -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
@@ -82,7 +112,6 @@
         android:visibility="gone"
         style="?android:attr/progressBarStyleLarge"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_centerInParent="true" />
+        android:layout_marginBottom="16dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
