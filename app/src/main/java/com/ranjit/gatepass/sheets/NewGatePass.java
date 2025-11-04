@@ -27,8 +27,10 @@ import com.ranjit.gatepass.services.ApiClient;
 import com.ranjit.gatepass.services.ApiService;
 import com.ranjit.gatepass.util.DateUtil;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import retrofit2.Call;
@@ -137,8 +139,9 @@ public class NewGatePass extends BottomSheetDialogFragment {
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(selection);
 
+            // Use 12-hour format for AM/PM
             MaterialTimePicker timePicker = new MaterialTimePicker.Builder()
-                    .setTimeFormat(TimeFormat.CLOCK_24H)
+                    .setTimeFormat(TimeFormat.CLOCK_12H)
                     .setHour(9)
                     .setMinute(0)
                     .setTitleText("Select Time")
@@ -150,17 +153,34 @@ public class NewGatePass extends BottomSheetDialogFragment {
                 calendar.set(Calendar.HOUR_OF_DAY, timePicker.getHour());
                 calendar.set(Calendar.MINUTE, timePicker.getMinute());
 
-                SimpleDateFormat displayFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+                SimpleDateFormat displayFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.getDefault());
                 SimpleDateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault());
-
-                editText.setText(displayFormat.format(calendar.getTime()));
 
                 if (isStart) {
                     fromDateTimeISO = isoFormat.format(calendar.getTime());
+                    editText.setText(displayFormat.format(calendar.getTime()));
                 } else {
+                    // Validate: end time should be after start time
+                    if (fromDateTimeISO != null) {
+                        try {
+                            Date start = isoFormat.parse(fromDateTimeISO);
+                            Date end = calendar.getTime();
+
+                            if (end.before(start)) {
+                                Toast.makeText(requireContext(), "End time must be after start time!", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
                     toDateTimeISO = isoFormat.format(calendar.getTime());
+                    editText.setText(displayFormat.format(calendar.getTime()));
                 }
             });
         });
     }
+
 }
+
