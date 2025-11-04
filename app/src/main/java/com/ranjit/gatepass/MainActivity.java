@@ -47,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
             if (item.getItemId() == R.id.nav_home) {
                 selectedFragment = gatePassFragment;
-            } else if (item.getItemId() == R.id.nav_complaints) {
-                selectedFragment = complaintFragment;
             } else if (item.getItemId() == R.id.nav_profile) {
                 selectedFragment = profileFragment;
             } else {
