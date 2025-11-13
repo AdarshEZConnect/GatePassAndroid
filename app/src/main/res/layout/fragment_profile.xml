@@ -41,7 +41,7 @@
                     android:id="@+id/profile_image"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_gravity="center"/>
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.Circle"                    android:layout_gravity="center"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"

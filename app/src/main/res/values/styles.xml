@@ -12,5 +12,10 @@
         <item name="android:textStyle">bold</item>
         <item name="android:letterSpacing">0.05</item>
     </style>
-
+    <!-- Circle shape appearance -->
+    <style name="ShapeAppearance.Circle" parent="">
+        <!-- 50% corner size makes it a perfect circle for square views -->
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
