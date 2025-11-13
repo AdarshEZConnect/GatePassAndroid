@@ -19,9 +19,9 @@
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.Material3.Toolbar.Surface"
             app:title="Profile"
+            app:navigationIcon="@drawable/logout_24px"
             app:titleTextColor="?attr/colorPrimary"
             app:titleCentered="true"
-            app:menu="@menu/view_profile_top_app_bar_menu"
             app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge" />
 
         <com.google.android.material.card.MaterialCardView
