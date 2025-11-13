@@ -1,215 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:colorBackground">
 
-    <!-- Top App Bar -->
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.Material3.Toolbar.Surface"
-        app:navigationIcon="@drawable/arrow_back_24px"
-        app:title="View Pass"
-        app:titleCentered="true"
-        app:menu="@menu/view_pass_top_app_bar_menu"
-        app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge" />
+        android:layout_height="wrap_content">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.Material3.Toolbar.Surface"
+            app:navigationIcon="@drawable/arrow_back_24px"
+            app:title="Pass Details"
+            app:titleCentered="true"
+            app:menu="@menu/view_pass_top_app_bar_menu" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Content -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:clipToPadding="false"
-        android:padding="16dp">
+        android:paddingBottom="80dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="16dp"
                 style="@style/Widget.Material3.CardView.Elevated"
-                android:elevation="1dp"
-                app:strokeWidth="@dimen/dp_0"
-                app:cardCornerRadius="3dp">
+                app:cardCornerRadius="12dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="15dp">
+                    android:gravity="center"
+                    android:padding="20dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pass Type"
+                        style="@style/TextAppearance.Material3.BodyLarge"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
 
-                    <RelativeLayout
+                    <TextView
+                        android:id="@+id/tvReason"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OUTING PASS"
+                        android:layout_marginTop="4dp"
+                        style="@style/TextAppearance.Material3.HeadlineSmall"
+                        android:textColor="?attr/colorPrimary"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/tvStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Pending Approval"
+                        style="@style/Widget.Material3.Chip.Assist"
+                        app:chipBackgroundColor="@color/design_default_color_error"
+                        app:chipStrokeWidth="0dp"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                style="@style/Widget.Material3.CardView.Elevated"
+                app:cardCornerRadius="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Key Dates"
+                        style="@style/TextAppearance.Material3.TitleMedium"
+                        android:textColor="?attr/colorOnSurface"
+                        android:layout_marginBottom="12dp" />
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="10dp">
-
+                        android:orientation="horizontal"
+                        android:paddingVertical="8dp">
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:text="Pass Type"
-                            style="@style/TextAppearance.Material3.TitleMedium"
-                            android:textColor="?attr/colorPrimary"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tvReason"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:text="24 Oct"
-                            android:textColor="#6E6C6C"
-                            style="@style/TextAppearance.Material3.TitleMedium"
-                            android:textStyle="bold" />
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="10dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:text="Start"
-                            style="@style/TextAppearance.Material3.TitleMedium"
-                            android:textColor="?attr/colorPrimary"
-                            android:textStyle="bold" />
-
+                            android:layout_weight="1"
+                            android:text="Start Date"
+                            style="@style/TextAppearance.Material3.BodyLarge"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
                         <TextView
                             android:id="@+id/tvDateStart"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:text="24 Oct"
-                            android:textColor="#6E6C6C"
-                            style="@style/TextAppearance.Material3.TitleMedium"
+                            android:text="24 October, 10:00 AM"
+                            style="@style/TextAppearance.Material3.BodyLarge"
+                            android:textColor="?attr/colorOnSurface"
                             android:textStyle="bold" />
-                    </RelativeLayout>
+                    </LinearLayout>
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="10dp">
-
+                        android:orientation="horizontal"
+                        android:paddingVertical="8dp">
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:text="End"
-                            android:textColor="?attr/colorPrimary"
-                            style="@style/TextAppearance.Material3.TitleMedium"
-                            android:textStyle="bold" />
-
+                            android:layout_weight="1"
+                            android:text="End Date"
+                            style="@style/TextAppearance.Material3.BodyLarge"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
                         <TextView
                             android:id="@+id/tvDateEnd"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:text="27 Oct"
-                            android:textColor="#6E6C6C"
-                            style="@style/TextAppearance.Material3.TitleMedium"
+                            android:text="27 October, 06:00 PM"
+                            style="@style/TextAppearance.Material3.BodyLarge"
+                            android:textColor="?attr/colorOnSurface"
                             android:textStyle="bold" />
-                    </RelativeLayout>
+                    </LinearLayout>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="10dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:text="Status"
-                            android:textColor="?attr/colorPrimary"
-                            style="@style/TextAppearance.Material3.TitleMedium"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tvStatus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:text="Pending"
-                            android:textColor="#6E6C6C"
-                            style="@style/TextAppearance.Material3.TitleMedium"
-                            android:textStyle="bold" />
-                    </RelativeLayout>
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 style="@style/Widget.Material3.CardView.Elevated"
-                android:elevation="1dp"
-                app:strokeWidth="@dimen/dp_0"
-                app:cardCornerRadius="10dp">
+                app:cardCornerRadius="12dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="15dp">
+                    android:padding="16dp">
 
-                    <RelativeLayout
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reason for Pass"
+                        style="@style/TextAppearance.Material3.TitleMedium"
+                        android:textColor="?attr/colorOnSurface"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/tvNoteDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="10dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:text="Note :"
-                            android:textColor="?attr/colorPrimary"
-                            style="@style/TextAppearance.Material3.TitleMedium"
-                            android:textStyle="bold" />
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="10dp">
-
-                        <TextView
-                            android:id="@+id/tvNoteDetail"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Reason"
-                            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
-
-                    </RelativeLayout>
+                        android:text="I need to go home for a critical family event that requires my mandatory presence. I will return before the end date."
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabAction"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:text="Cancel Pass"
+        app:icon="@drawable/ic_if_home" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
